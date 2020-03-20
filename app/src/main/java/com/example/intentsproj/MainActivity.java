@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void displayToast(View v){
-        Toast.makeText(MainActivity.this,"You just clicked the OK button",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Input valid",Toast.LENGTH_SHORT).show();
     }
 
 
 
-    public void addNum(View view) {
+    public void addNum(View v) {
         double n1, n2 , result1;
         n1 = Double.parseDouble(no1.getText().toString());
         n2 = Double.parseDouble(no2.getText().toString());
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         result.setText(String.valueOf(result1));
     }
 
-    public void minus(View m){
+    public void minus(View v){
         double n1, n2 , result1;
         n1 = Double.parseDouble(no1.getText().toString());
         n2 = Double.parseDouble(no2.getText().toString());
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         result.setText(String.valueOf(result1));
     }
 
-    public void multiply(View b){
+    public void multiply(View v){
         double n1, n2 , result1;
         n1 = Double.parseDouble(no1.getText().toString());
         n2 = Double.parseDouble(no2.getText().toString());
@@ -70,13 +70,31 @@ public class MainActivity extends AppCompatActivity {
         result.setText(String.valueOf(result1));
     }
 
-    public void divide(View n){
+    public void divide(View v){
         double n1, n2 , result1;
         n1 = Double.parseDouble(no1.getText().toString());
         n2 = Double.parseDouble(no2.getText().toString());
         result1= n1/n2;
         result.setText(String.valueOf(result1));
     }
+
+
+
+
+
+    //Creating the LayoutInflater instance
+    LayoutInflater li = getLayoutInflater();
+    //Getting the View object as defined in the customtoast.xml file
+    View layout = li.inflate(R.layout.customtoast, (ViewGroup)
+            findViewById(R.id.custom_toast_layout));
+    //Creating the Toast object
+    Toast toast = new Toast(getApplicationContext());
+          toast.setDuration(Toast.LENGTH_SHORT);
+          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+          toast.setView(layout);//setting the view of custom toast layout
+          toast.show();
+}
+
 }
 
 
